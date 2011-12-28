@@ -3,6 +3,8 @@ require 'net/http'
 
 class UrlHunter
   VERSION = "0.0.1"
+  class Error < StandardError; end
+
   attr_reader :url, :original_url, :limit, :tries
 
   # Class level wrapper
@@ -13,7 +15,7 @@ class UrlHunter
   # Init
   def initialize(url, limit = 5)
     if not url =~ /^(http|https):\/\//i
-      raise StandardError, 'Url must begin with http:// or https://'
+      raise UrlHunter::Error, 'URL must begin with http:// or https://'
     end
 
     @limit = limit > 0 ? limit : 5
