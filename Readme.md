@@ -1,6 +1,6 @@
 ### Url Hunter ###
 
-Before I go anywhere with you, I wan to know where you're taking me
+Before I go anywhere with you, I want to know where you're taking me
 
     require 'url_hunter'
     UrlHunter.resolve 'http://bit.ly/2SnEZb'
