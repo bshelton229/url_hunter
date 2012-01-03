@@ -29,7 +29,15 @@ class UrlHunter
     # Return what we have so far if we're above the limit
     return @url if @tries >= @limit
     u = URI.parse(@url)
-    res = Net::HTTP.get_response(u)
+
+    # Try to get a NET response
+    # Or just return URL
+    begin
+      res = Net::HTTP.get_response(u)
+    rescue Exception
+      return @url
+    end
+
     if res.kind_of?(Net::HTTPRedirection)
       redirect = res['Location']
       # Append Location re-direct to previous URL if it's relative
