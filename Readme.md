@@ -2,7 +2,7 @@
 
 Before I go anywhere with you, I want to know where you're taking me
 
-### Quick Reoslve ###
+### Quick Resolve ###
     require 'url_hunter'
     UrlHunter.resolve 'http://bit.ly/2SnEZb'
     => "http://www.microsoft.com/en-us/default.aspx"
