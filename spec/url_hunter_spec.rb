@@ -14,4 +14,9 @@ describe UrlHunter, '#resolve' do
     u.resolve.should eq('http://www.apple.com/')
     u.tries.should eq(1)
   end
+
+  it "Should handle relative paths mixed in Location tags" do
+    u = UrlHunter.new('http://flic.kr/p/bBqyXJ')
+    u.resolve.should_not include('bBqyXJ')
+  end
 end
