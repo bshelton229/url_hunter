@@ -2,7 +2,7 @@ require 'uri'
 require 'net/http'
 
 class UrlHunter
-  VERSION = "0.0.1"
+  VERSION = "0.0.2"
   class Error < StandardError; end
 
   attr_reader :url, :original_url, :limit, :tries
@@ -42,7 +42,7 @@ class UrlHunter
       redirect = res['Location']
       # Append Location re-direct to previous URL if it's relative
       if not redirect =~ /^(http|https):\/\//i
-        redirect = @url + redirect
+        redirect = u.scheme + '://' + u.hostname + redirect
       end
       @url = redirect
       @tries += 1
